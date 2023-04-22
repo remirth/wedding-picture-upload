@@ -1,3 +1,4 @@
+console.log = console.warn;
 /** @type {import("prettier").Config} */
 const config = {
   plugins: [require.resolve('prettier-plugin-tailwindcss')],

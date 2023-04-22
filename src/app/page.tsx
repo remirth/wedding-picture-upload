@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <div>ass</div>
+      <div className='text-primary'>ass</div>
     </>
   );
 }

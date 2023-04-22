@@ -8,6 +8,7 @@ const jetBrains = JetBrains_Mono({
   display: 'block',
   variable: '--font-jetbrains',
 });
+
 /**
  * @param {unknown} param0 - children
  * @param {React.ReactNode} param0.children - children
