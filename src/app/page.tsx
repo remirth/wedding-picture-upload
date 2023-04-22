@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <div className='text-primary'>ass</div>
+      <div className='text-primary'>Loading...</div>
     </>
   );
 }

@@ -4,6 +4,7 @@ import {JetBrains_Mono} from 'next/font/google';
 import '../styles/globals.css';
 import {type ChildrenProps} from '~/types/generic';
 import {Header} from './header';
+import {Main} from './main';
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin', 'latin-ext'],
@@ -23,9 +24,9 @@ export default function RootLayout({
 }: ChildrenProps): JSX.Element {
   return (
     <html lang='en' className={jetBrains.variable}>
-      <body>
+      <body className='h-screen w-screen'>
         <Header />
-        {children}
+        <Main>{children}</Main>
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import {type ChildrenProps} from '~/types/generic';
 
 export const Header = () => {
   return (
-    <div className='navbar menu bg-secondary p-0'>
+    <div className='navbar menu sticky z-50 bg-secondary p-0'>
       <ul className='grid h-16 w-full grid-cols-3'>
         <ListItem title='Galleri' to='/gallery' />
         <ListItem title='Ladda upp' to='/upload' />
