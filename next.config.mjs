@@ -21,5 +21,14 @@ const config = {
   experimental: {
     appDir: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/upload',
+        permanent: true,
+      },
+    ];
+  },
 };
 export default config;
