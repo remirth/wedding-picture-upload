@@ -6,7 +6,7 @@ import {type ChildrenProps} from '~/types/generic';
 
 export const Header = () => {
   return (
-    <div className='navbar bg-secondary p-0'>
+    <div className='navbar menu bg-secondary p-0'>
       <ul className='grid h-16 w-full grid-cols-3'>
         <ListItem title='Galleri' to='/gallery' />
         <ListItem title='Ladda upp' to='/upload' />
@@ -31,7 +31,7 @@ const ListItem = ({title, to}: ListItemProps) => {
 
   return (
     <li
-      className={`h-full w-full border-b-4 border-solid ${
+      className={`custom-fade h-full w-full border-b-4 border-solid ${
         ListItemClasses[String(isSelected) as 'true' | 'false']
       }`}
     >
@@ -49,5 +49,9 @@ const NavLink = ({
 }: {to: string; isSelected: boolean} & ChildrenProps) => {
   if (isSelected) return <>{children}</>;
 
-  return <Link href={to}>{children}</Link>;
+  return (
+    <Link className='h-full w-full p-0' href={to}>
+      {children}
+    </Link>
+  );
 };
