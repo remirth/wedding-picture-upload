@@ -9,7 +9,18 @@ const config = {
 const connection = connect(config);
 
 export async function insertImage(image: Blob) {
-  if (!image.type.includes('image')) throw new Error('Not an image');
-
   await connection.execute('INSERT INTO Images (file) VALUES (?)', [image]);
+}
+
+export async function insertImages(images: Blob[]) {
+  let query = 'INSERT INTO Images (file) VALUES ';
+
+  for (let i = 0; i < images.length; i++) {
+    query += '(?)';
+    if (i < images.length - 1) {
+      query += ',';
+    }
+  }
+
+  await connection.execute(query, images);
 }
