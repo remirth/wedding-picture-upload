@@ -1,7 +1,7 @@
+import ImageGetter from './image';
+
+export const runtime = 'edge';
+
 export default function Page() {
-  return (
-    <>
-      <div className='text-primary'>coom</div>
-    </>
-  );
+  return <ImageGetter />;
 }

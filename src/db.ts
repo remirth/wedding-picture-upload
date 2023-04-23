@@ -12,7 +12,7 @@ export async function insertImage(image: Blob) {
   await connection.execute('INSERT INTO Images (file) VALUES (?)', [image]);
 }
 
-export async function insertImages(images: Blob[]) {
+export async function insertImages(images: string[]) {
   let query = 'INSERT INTO Images (file) VALUES ';
 
   for (let i = 0; i < images.length; i++) {
@@ -23,4 +23,14 @@ export async function insertImages(images: Blob[]) {
   }
 
   await connection.execute(query, images);
+}
+
+export async function getImageById(id: string): Promise<unknown> {
+  const result = await connection.execute(
+    'SELECT file FROM Images WHERE id = ?',
+    [id]
+  );
+  const image = (result.rows[0] as any).file;
+
+  return image;
 }

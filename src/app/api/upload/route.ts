@@ -8,11 +8,11 @@ export const config = {
 
 export async function POST(req: NextRequest) {
   const form = await req.formData();
-  const images: Blob[] = [];
+  const images: string[] = [];
 
   for (const value of form.values()) {
     if (!isImage(value)) continue;
-    images.push(value);
+    images.push(Buffer.from(await value.arrayBuffer()).toString('base64'));
   }
 
   if (!images.length) {
