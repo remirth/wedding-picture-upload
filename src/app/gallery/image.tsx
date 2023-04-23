@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import {cache} from 'react';
 import {getImageById} from '~/db';
-export default async function ImageGetter() {
-  const base64 = await cache(() => getImageById('6'))();
+export default function ImageGetter() {
   return (
     <>
       <div className='text-primary'>
         <Image
-          src={`data:image/jpeg;base64,${base64 as string}`}
+          src='/api/image/7'
+          className='absolute'
           alt='generated image'
           fill
           priority={true}

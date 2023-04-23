@@ -25,12 +25,17 @@ export async function insertImages(images: string[]) {
   await connection.execute(query, images);
 }
 
-export async function getImageById(id: string): Promise<unknown> {
+export async function getImageById(id: string): Promise<string> {
   const result = await connection.execute(
     'SELECT file FROM Images WHERE id = ?',
     [id]
   );
-  const image = (result.rows[0] as any).file;
 
-  return image;
+  // Do a little unsafe type assertion here,
+  // Rows is an array of objects, whose keys correspond to the column names.
+  //
+  // We could do a runtime assertion that this object is what we assume it is,
+  // however, the column 'file' is a LONGTEXT of base64-encoded images,
+  // so any validation that includes memory allocation will be costly.
+  return (result.rows[0] as Record<'file', string>).file;
 }
