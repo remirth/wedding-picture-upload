@@ -6,13 +6,13 @@ import {type ChildrenProps} from '~/types/generic';
 
 export const Header = () => {
   return (
-    <div className='navbar menu sticky z-50 bg-secondary p-0'>
+    <header className='navbar menu sticky z-50 bg-secondary p-0'>
       <ul className='grid h-16 w-full grid-cols-3'>
         <ListItem title='Galleri' to='/gallery' />
         <ListItem title='Ladda upp' to='/upload' />
         <ListItem title='Collage' to='/collage' />
       </ul>
-    </div>
+    </header>
   );
 };
 
@@ -34,6 +34,7 @@ const ListItem = ({title, to}: ListItemProps) => {
       className={`custom-fade h-full w-full border-b-4 border-solid ${
         ListItemClasses[String(isSelected) as 'true' | 'false']
       }`}
+      id={`nav-${to}`}
     >
       <NavLink to={to} isSelected={isSelected}>
         <p className='mx-auto flex h-full w-fit place-items-center'>{title}</p>
