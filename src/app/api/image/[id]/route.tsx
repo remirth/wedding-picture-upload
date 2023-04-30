@@ -11,15 +11,15 @@ type QueryParams = {
     height: number | undefined;
   };
 };
-export async function GET(_: NextRequest, query: QueryParams) {
+export async function GET(req: NextRequest, query: QueryParams) {
   let image = '';
-  let height: number | undefined;
-  let width: number | undefined;
+  const params = new URLSearchParams(decodeURI(req.url));
+
+  const height = params.get('height');
+  const width = params.get('width');
 
   try {
     image = await getImageById(query.params.id);
-    height = query.params.height;
-    width = query.params.width;
   } catch (e) {
     console.error(e);
     return new ImageResponse(
@@ -42,8 +42,8 @@ export async function GET(_: NextRequest, query: QueryParams) {
         <img
           src={Buffer.from(image, 'base64').buffer as never}
           alt={`The image with id ${query.params.id}`}
-          height={height}
-          width={width}
+          height={height ?? ''}
+          width={width ?? ''}
         />
       </>
     ),
