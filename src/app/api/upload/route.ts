@@ -2,9 +2,7 @@ import {NextResponse, type NextRequest} from 'next/server';
 import {insertImages} from '~/db';
 import {isImage} from '~/utils';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   const form = await req.formData();

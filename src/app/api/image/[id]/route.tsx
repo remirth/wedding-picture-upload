@@ -1,5 +1,5 @@
 import {type NextRequest, ImageResponse} from 'next/server';
-import {getImageById} from '~/db';
+import {getImageById} from '~/actions';
 export const config = {
   runtime: 'edge',
 };
@@ -7,12 +7,19 @@ export const config = {
 type QueryParams = {
   params: {
     id: string;
+    width: number | undefined;
+    height: number | undefined;
   };
 };
 export async function GET(_: NextRequest, query: QueryParams) {
   let image = '';
+  let height: number | undefined;
+  let width: number | undefined;
+
   try {
     image = await getImageById(query.params.id);
+    height = query.params.height;
+    width = query.params.width;
   } catch (e) {
     console.error(e);
     return new ImageResponse(
@@ -35,6 +42,8 @@ export async function GET(_: NextRequest, query: QueryParams) {
         <img
           src={Buffer.from(image, 'base64').buffer as never}
           alt={`The image with id ${query.params.id}`}
+          height={height}
+          width={width}
         />
       </>
     ),

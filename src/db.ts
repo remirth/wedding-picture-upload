@@ -25,7 +25,7 @@ export async function insertImages(images: string[]) {
   await connection.execute(query, images);
 }
 
-export async function getImageById(id: string): Promise<string> {
+export async function getImageByIdFromDb(id: string): Promise<string> {
   const result = await connection.execute(
     'SELECT file FROM Images WHERE id = ?',
     [id]
@@ -38,4 +38,16 @@ export async function getImageById(id: string): Promise<string> {
   // however, the column 'file' is a LONGTEXT of base64-encoded images,
   // so any validation that includes memory allocation will be costly.
   return (result.rows[0] as Record<'file', string>).file;
+}
+
+export async function getAllImageIds(): Promise<string[]> {
+  const result = await connection.execute(
+    'SELECT id FROM Images WHERE file IS NOT NULL'
+  );
+  const ids: string[] = new Array<string>(result.rows.length);
+  for (let i = 0; i < result.rows.length; i++) {
+    ids[i] = (result.rows[i] as Record<'id', string>).id;
+  }
+
+  return ids;
 }
