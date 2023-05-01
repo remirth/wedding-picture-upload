@@ -10,3 +10,7 @@
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.slide-height {
+  max-height: calc(100vh - 250px) !important;
+}

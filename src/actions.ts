@@ -5,8 +5,8 @@ let imageLinks = new Array<GalleryItem>(10000);
 
 const THUMBNAIL_WIDTH = 1000 as const;
 const THUMBNAIL_HEIGHT = 600 as const;
-const IMAGE_WIDTH = 1000 as const;
-const IMAGE_HEIGHT = 720 as const;
+const IMAGE_WIDTH = 1280 as const;
+const IMAGE_HEIGHT = 600 as const;
 const IMAGE_URL_BASE = '/api/image' as const;
 
 export const getAllImageUrls = cache(async () => {

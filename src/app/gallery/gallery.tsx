@@ -27,36 +27,33 @@ const Item = memo(
     fullscreen, // fullscreen version of img
     original,
     originalAlt,
-    originalHeight,
-    originalWidth,
     originalTitle,
     sizes,
-    loading,
     isFullscreen,
-    srcSet,
     onImageError,
     handleImageLoaded,
+    originalWidth,
+    originalHeight,
   }: ReactImageGalleryItem & {
     isFullscreen: boolean;
-    handleImageLoaded: (e: any, o: string) => void;
+    handleImageLoaded: (e: unknown, o: string) => void;
     onImageError: React.EventHandler<any>;
-  }) => {
+  } & GalleryItem) => {
     const itemSrc = isFullscreen ? fullscreen || original : original;
 
     return (
       <>
         <Image
-          className='image-gallery-image'
+          className='image-gallery-image slide-height'
           src={itemSrc}
           alt={originalAlt ?? 'A gallery item'}
+          width={originalWidth}
           height={originalHeight}
           priority
-          width={originalWidth}
           sizes={sizes}
           onError={onImageError}
           onLoad={(e) => handleImageLoaded?.(e, original)}
           title={originalTitle}
-          loading={loading}
         />
         {description && (
           <span className='image-gallery-description'>{description}</span>
@@ -68,13 +65,13 @@ const Item = memo(
 
 Item.displayName = 'RenderItem';
 
-const ThumbInner = (item: ReactImageGalleryItem) => {
+const ThumbInner = memo((item: ReactImageGalleryItem & GalleryItem) => {
   return (
     <>
       <span className='image-gallery-thumbnail-inner'>
         <Image
           className='image-gallery-thumbnail-image'
-          src={item.thumbnail as string}
+          src={item.thumbnail}
           height={item.thumbnailHeight}
           width={item.thumbnailWidth}
           alt={item.thumbnailAlt ?? 'Thumbnail'}
@@ -89,4 +86,6 @@ const ThumbInner = (item: ReactImageGalleryItem) => {
       </span>
     </>
   );
-};
+});
+
+ThumbInner.displayName = 'ThumbInner';
