@@ -25,7 +25,7 @@ export const ImageUploadForm = () => {
   return (
     <>
       <form
-        className='flex flex-col'
+        className='flex flex-col pb-6'
         action='/api/upload'
         method='POST'
         encType='multipart/form-data'

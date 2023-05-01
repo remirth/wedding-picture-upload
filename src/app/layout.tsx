@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import {type ChildrenProps} from '~/types/generic';
 import {Header} from './header';
 import {Main} from './main';
+import {preloadImages} from '~/actions';
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin', 'latin-ext'],
@@ -22,6 +23,8 @@ export default function RootLayout({
   // This will be populated with nested layouts or pages
   children,
 }: ChildrenProps): JSX.Element {
+  preloadImages();
+
   return (
     <html lang='en' className={jetBrains.variable}>
       <body className='h-screen w-screen'>

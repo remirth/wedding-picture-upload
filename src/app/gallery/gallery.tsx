@@ -1,5 +1,5 @@
 'use client';
-import ImageGallery, {ReactImageGalleryItem} from 'react-image-gallery';
+import ImageGallery, {type ReactImageGalleryItem} from 'react-image-gallery';
 
 import Image from 'next/image';
 import type {GalleryItem} from '~/types';

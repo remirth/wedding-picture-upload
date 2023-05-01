@@ -1,6 +1,7 @@
 import {cache} from 'react';
 import {getAllImageIds, getImageByIdFromDb} from './db';
 import type {GalleryItem} from './types';
+import 'server-only';
 let imageLinks = new Array<GalleryItem>(10000);
 
 const THUMBNAIL_WIDTH = 1000 as const;
@@ -20,11 +21,11 @@ export const getAllImageUrls = cache(async () => {
       }?&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
       thumbnail: `${IMAGE_URL_BASE}/${
         ids[i] as string
-      }?&width=${THUMBNAIL_WIDTH}&height=${THUMBNAIL_HEIGHT}`,
-      thumbnailWidth: THUMBNAIL_WIDTH,
-      thumbnailHeight: THUMBNAIL_HEIGHT,
+      }?&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
       originalWidth: IMAGE_WIDTH,
       originalHeight: IMAGE_HEIGHT,
+      thumbnailWidth: IMAGE_WIDTH,
+      thumbnailHeight: IMAGE_HEIGHT,
     };
   }
 
@@ -32,3 +33,7 @@ export const getAllImageUrls = cache(async () => {
 });
 
 export const getImageById = cache(getImageByIdFromDb);
+
+export function preloadImages() {
+  void getAllImageIds().then((ids) => Promise.all([ids.map(getImageById)]));
+}
