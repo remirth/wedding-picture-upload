@@ -6,6 +6,18 @@ import {type ChildrenProps} from '~/types/generic';
 import {Header} from './header';
 import {Main} from './main';
 import {preloadImages} from '~/actions';
+import Head from 'next/head';
+
+export const metadata = {
+  title: {
+    template: '%s | Mirre Joe Bilder',
+    default: 'Ladda upp',
+  },
+  description: 'Dela bilder i samband med Miriam och Joes bröllop',
+  openGraph: {
+    images: ['https://wedding-picture-upload.vercel.app/api/image/1'],
+  },
+};
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin', 'latin-ext'],
@@ -27,6 +39,11 @@ export default function RootLayout({
 
   return (
     <html lang='en' className={jetBrains.variable}>
+      <Head>
+        <title>My page title</title>
+        <meta property='og:title' content='My page title' key='title' />
+      </Head>
+
       <body className='h-screen w-screen'>
         <Header />
         <Main>{children}</Main>
