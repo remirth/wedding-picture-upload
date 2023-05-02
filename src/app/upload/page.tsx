@@ -1,4 +1,3 @@
-'use client';
 import {ImageUploadForm} from './image_upload_form';
 export const runtime = 'edge';
 
