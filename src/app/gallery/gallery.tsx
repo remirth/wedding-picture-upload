@@ -43,13 +43,12 @@ const Item = memo(
 
     return (
       <>
-        <Image
+        <img
           className='image-gallery-image slide-height'
           src={itemSrc}
           alt={originalAlt ?? 'A gallery item'}
           width={originalWidth}
           height={originalHeight}
-          priority
           sizes={sizes}
           onError={onImageError}
           onLoad={(e) => handleImageLoaded?.(e, original)}
@@ -69,7 +68,7 @@ const ThumbInner = memo((item: ReactImageGalleryItem & GalleryItem) => {
   return (
     <>
       <span className='image-gallery-thumbnail-inner'>
-        <Image
+        <img
           className='image-gallery-thumbnail-image'
           src={item.thumbnail}
           height={item.thumbnailHeight}

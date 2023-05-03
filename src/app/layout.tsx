@@ -11,11 +11,11 @@ import Head from 'next/head';
 export const metadata = {
   title: {
     template: '%s | Mirre Joe Bilder',
-    default: 'Ladda upp',
+    default: 'Ladda upp bilder',
   },
   description: 'Dela bilder i samband med Miriam och Joes bröllop',
   openGraph: {
-    images: ['https://wedding-picture-upload.vercel.app/api/image/1'],
+    images: ['https://wedding-picture-upload.vercel.app/api/image/*'],
   },
 };
 
