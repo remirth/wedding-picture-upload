@@ -36,7 +36,6 @@ export const ImageUploadForm = () => {
           type='file'
           accept='image/*'
           name='image'
-          capture='environment'
           multiple
           className='file-input-bordered file-input-primary file-input mx-auto mt-6 w-full max-w-sm'
         />
