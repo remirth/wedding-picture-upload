@@ -15,7 +15,7 @@ export const metadata = {
   },
   description: 'Dela bilder i samband med Miriam och Joes bröllop',
   openGraph: {
-    images: ['https://wedding-picture-upload.vercel.app/api/image/*'],
+    images: ['https://wedding-picture-upload.vercel.app/api/image'],
   },
 };
 

@@ -16,12 +16,12 @@ export const getAllImageUrls = cache(async () => {
 
   for (let i = 0; i < ids.length; i++) {
     imageLinks[i] = {
-      original: `${IMAGE_URL_BASE}/${
+      original: `${IMAGE_URL_BASE}?id=${
         ids[i] as string
-      }?&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
-      thumbnail: `${IMAGE_URL_BASE}/${
+      }&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
+      thumbnail: `${IMAGE_URL_BASE}?id=${
         ids[i] as string
-      }?&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
+      }&width=${IMAGE_WIDTH}&height=${IMAGE_HEIGHT}`,
       originalWidth: IMAGE_WIDTH,
       originalHeight: IMAGE_HEIGHT,
       thumbnailWidth: IMAGE_WIDTH,
