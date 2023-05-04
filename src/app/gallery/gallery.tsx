@@ -43,7 +43,7 @@ const Item = memo(
 
     return (
       <>
-        <img
+        <Image
           className='image-gallery-image slide-height'
           src={itemSrc}
           alt={originalAlt ?? 'A gallery item'}
